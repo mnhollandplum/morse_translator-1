@@ -50,12 +50,18 @@ class MorseTranslator
   end
 
   def morse_to_eng(morse)
-   morse_chars = morse.split(' ')
-   eng_array =
-   morse_chars.map do |char|
-     reverse_dictionary[char]
-   end
-   eng_array.insert(5, " ").join
+   morse_words = morse.split("  ")
+   morse_words.map do |morse_word|
+     morse_word_to_eng(morse_word)
+   end.join(" ")
+  end
+
+  def morse_word_to_eng(morse_word)
+    morse_chars = morse_word.split
+      morse_chars.map do |morse_char|
+        reverse_dictionary[morse_char]
+      end.join
+
   end
 
   def reverse_dictionary
